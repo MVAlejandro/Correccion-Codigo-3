@@ -1,35 +1,37 @@
 // Tenemos un li de productos
 
 const productos = [
-  {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"},
-  {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./taco-azul.jpg"},
-  {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./bota-negra.jpg"},
-  {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./bota-azul.jpg"},
-  {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
-]
+  {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./assets/taco-negro.jpg"},
+  {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./assets/taco-azul.jpg"},
+  {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./assets/bota-negra.jpg"},
+  {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./assets/bota-azul.jpg"},
+  {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./assets/zapato-rojo.jpg"}
+] // Se modifica la referencia a cada imagen
 
-const li = document.getElementsByName("lista-de-productos")
+const li = document.getElementById("lista-de-productos")
 const $i = document.querySelector('.input');
 
-for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+const displayProductos = (productos) => { // Se declara la función faltante
+  for (let i = 0; i < productos.length; i++) {
+    const d = document.createElement("div") // Se cambia la declaración de la variable por const para coincidir con los demás elementos del HTML
+    d.classList.add("producto")
 
-  var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
-  
-  var imagen = document.createElement("img");
-  imagen.setAttribute('src', productos[i].img);
+    const ti = document.createElement("p") // Se cambia la declaración de la variable por const para coincidir con los demás elementos del HTML
+    ti.classList.add("titulo")
+    ti.textContent = productos[i].nombre
+    
+    const imagen = document.createElement("img"); // Se cambia la declaración de la variable por const para coincidir con los demás elementos del HTML
+    imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+    d.appendChild(ti)
+    d.appendChild(imagen)
 
-  li.appendChild(d)
-}
+    li.appendChild(d)
+  }
+};
 
 displayProductos(productos)
-const botonDeFiltro = document.querySelector("button");
+const botonDeFiltro = document.getElementById("btn-filtrar"); // Se cambia el llamado por id
 
 botonDeFiltro.onclick = function() {
   while (li.firstChild) {
